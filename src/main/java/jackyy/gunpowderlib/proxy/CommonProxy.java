@@ -1,27 +1,21 @@
-package jackyy.gunpowder.proxy;
+package jackyy.gunpowderlib.proxy;
 
-import jackyy.gunpowder.handler.ClientEventsHandler;
+import jackyy.gunpowderlib.handler.EventsHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy extends CommonProxy {
+public class CommonProxy {
 
-    @Override
     public void preInit(FMLPreInitializationEvent event) {
-        super.preInit(event);
-        MinecraftForge.EVENT_BUS.register(new ClientEventsHandler());
-	}
-
-    @Override
-    public void init(FMLInitializationEvent event) {
-        super.init(event);
+        MinecraftForge.EVENT_BUS.register(new EventsHandler());
     }
 
-    @Override
+    public void init(FMLInitializationEvent event) {
+    }
+
     public void postInit(FMLPostInitializationEvent event) {
-        super.postInit(event);
     }
 
 }

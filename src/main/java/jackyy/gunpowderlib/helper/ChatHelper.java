@@ -1,4 +1,4 @@
-package jackyy.gunpowder.helper;
+package jackyy.gunpowderlib.helper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;

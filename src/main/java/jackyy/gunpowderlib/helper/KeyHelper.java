@@ -1,4 +1,4 @@
-package jackyy.gunpowder.helper;
+package jackyy.gunpowderlib.helper;
 
 import org.lwjgl.input.Keyboard;
 

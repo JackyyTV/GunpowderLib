@@ -1,4 +1,4 @@
-package jackyy.gunpowder.helper;
+package jackyy.gunpowderlib.helper;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

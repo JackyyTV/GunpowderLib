@@ -1,4 +1,4 @@
-package jackyy.gunpowder.compat;
+package jackyy.gunpowderlib.compat;
 
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;

@@ -1,4 +1,4 @@
-package jackyy.gunpowder.helper;
+package jackyy.gunpowderlib.helper;
 
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;

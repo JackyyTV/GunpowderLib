@@ -1,7 +1,7 @@
-package jackyy.gunpowder.handler;
+package jackyy.gunpowderlib.handler;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import jackyy.gunpowder.client.CapeBufferDownload;
+import jackyy.gunpowderlib.client.CapeBufferDownload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;

@@ -1,7 +1,7 @@
-# Gunpowder
-[![Downloads](http://cf.way2muchnoise.eu/full_gunpowder_downloads.svg)](https://minecraft.curseforge.com/projects/gunpowder) [![MCVersion](http://cf.way2muchnoise.eu/versions/gunpowder.svg)](https://minecraft.curseforge.com/projects/gunpowder)
+# GunpowderLib
+[![Downloads](http://cf.way2muchnoise.eu/full_gunpowderlib_downloads.svg)](https://minecraft.curseforge.com/projects/gunpowderlib) [![MCVersion](http://cf.way2muchnoise.eu/versions/gunpowderlib.svg)](https://minecraft.curseforge.com/projects/gunpowderlib)
 
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/JackyyTV/Gunpowder.svg)](https://github.com/JackyyTV/Gunpowder/pulls) [![license](https://img.shields.io/github/license/JackyyTV/Gunpowder.svg)](../dev-1.12.2/LICENSE)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/JackyyTV/GunpowderLib.svg)](https://github.com/JackyyTV/GunpowderLib/pulls) [![license](https://img.shields.io/github/license/JackyyTV/GunpowderLib.svg)](../dev-1.12.2/LICENSE)
 
 ---
 

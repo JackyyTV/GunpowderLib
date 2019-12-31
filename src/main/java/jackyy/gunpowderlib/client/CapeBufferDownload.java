@@ -1,4 +1,4 @@
-package jackyy.gunpowder.client;
+package jackyy.gunpowderlib.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
@@ -27,7 +27,7 @@ public class CapeBufferDownload extends Thread {
         username = name;
         staticCapeUrl = url;
         setDaemon(true);
-        setName("Gunpowder Cape Buffer Download");
+        setName("GunpowderLib Cape Buffer Download");
     }
 
     @Override

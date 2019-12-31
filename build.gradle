@@ -10,8 +10,8 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "${mc_version}-${mod_version}"
-group = "jackyy.gunpowder"
-archivesBaseName = "Gunpowder"
+group = "jackyy.gunpowderlib"
+archivesBaseName = "GunpowderLib"
 
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
@@ -24,7 +24,7 @@ minecraft {
   mappings = "${mappings_version}"
 
   replace '@FINGERPRINT@', project.findProperty('signSHA1')
-  replaceIn "Gunpowder.java"
+  replaceIn "GunpowderLib.java"
 }
 
 repositories {
@@ -63,7 +63,7 @@ processResources {
 
 jar {
   manifest {
-    attributes 'FMLAT': 'gunpowder_at.cfg'
+    attributes 'FMLAT': 'gunpowderlib_at.cfg'
   }
 }
 

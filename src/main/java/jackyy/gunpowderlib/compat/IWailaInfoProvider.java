@@ -1,4 +1,4 @@
-package jackyy.gunpowder.compat;
+package jackyy.gunpowderlib.compat;
 
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;

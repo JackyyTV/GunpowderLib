@@ -1,4 +1,4 @@
-package jackyy.gunpowder.handler;
+package jackyy.gunpowderlib.handler;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
