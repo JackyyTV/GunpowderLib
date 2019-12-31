@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gunpowder",
+  "name": "Gunpowder",
+  "description": "A support library for Jackyy's mods.",
+  "version": "1.12.2-1.0",
+  "mcversion": "1.12.2",
+  "url": "https://github.com/JackyyTV/Gunpowder",
+  "updateUrl": "",
+  "authorList": ["Jackyy"],
+  "credits": "",
+  "logoFile": "assets/gunpowder/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
