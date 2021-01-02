@@ -1,12 +1,12 @@
 package jackyy.gunpowderlib.handler;
 
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.CreeperEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.UUID;
 
@@ -16,17 +16,17 @@ public class EventsHandler {
     public void onEntityTargeted(LivingSetAttackTargetEvent event) {
         if (event.getTarget() == null)
             return;
-        if (!(event.getTarget() instanceof EntityPlayer) || event.getTarget() instanceof FakePlayer)
+        if (!(event.getTarget() instanceof PlayerEntity) || event.getTarget() instanceof FakePlayer)
             return;
-        if (!(event.getEntity() instanceof EntityLiving))
+        if (!(event.getEntity() instanceof LivingEntity))
             return;
 
-        EntityPlayer player = (EntityPlayer) event.getTarget();
-        EntityLiving entity = (EntityLiving) event.getEntity();
+        PlayerEntity player = (PlayerEntity) event.getTarget();
+        LivingEntity entity = (LivingEntity) event.getEntity();
 
-        if (entity instanceof EntityCreeper) {
+        if (entity instanceof CreeperEntity) {
             if (player.getUniqueID().equals(UUID.fromString("38de3769-70fa-441c-89e8-67280f3068a0"))) {
-                entity.setAttackTarget(null);
+                ((CreeperEntity) entity).setAttackTarget(null);
                 entity.setRevengeTarget(null);
             }
         }
@@ -34,16 +34,16 @@ public class EventsHandler {
 
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {
-        if (!(event.getEntity() instanceof EntityLiving))
+        if (!(event.getEntity() instanceof LivingEntity))
             return;
-        EntityLiving entity = (EntityLiving) event.getEntity();
-        if (entity.getAttackTarget() == null || !(entity.getAttackTarget() instanceof EntityPlayer) || entity.getAttackTarget() instanceof FakePlayer)
+        LivingEntity entity = (LivingEntity) event.getEntity();
+        if (entity.getAttackingEntity() == null || !(entity.getAttackingEntity() instanceof PlayerEntity) || entity.getAttackingEntity() instanceof FakePlayer)
             return;
-        EntityPlayer player = (EntityPlayer) entity.getAttackTarget();
+        PlayerEntity player = (PlayerEntity) entity.getAttackingEntity();
 
-        if (entity instanceof EntityCreeper) {
+        if (entity instanceof CreeperEntity) {
             if (player.getUniqueID().equals(UUID.fromString("38de3769-70fa-441c-89e8-67280f3068a0"))) {
-                entity.setAttackTarget(null);
+                ((CreeperEntity) entity).setAttackTarget(null);
                 entity.setRevengeTarget(null);
             }
         }

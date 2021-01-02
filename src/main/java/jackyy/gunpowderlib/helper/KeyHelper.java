@@ -1,9 +1,9 @@
 package jackyy.gunpowderlib.helper;
 
-import org.lwjgl.input.Keyboard;
-
 public class KeyHelper {
 
+    /*
+    TODO Find out new methods
     public static boolean isShiftKeyDown() {
         return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
     }
@@ -15,5 +15,6 @@ public class KeyHelper {
     public static boolean isAltKeyDown() {
         return Keyboard.isKeyDown(Keyboard.KEY_LMENU) || Keyboard.isKeyDown(Keyboard.KEY_RMENU);
     }
+    */
 
 }

@@ -1,15 +1,15 @@
 package jackyy.gunpowderlib.helper;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 public class EnergyHelper {
 
     public static ItemStack setDefaultEnergyTag(ItemStack container, int energy) {
-        if (!container.hasTagCompound()) {
-            container.setTagCompound(new NBTTagCompound());
+        if (!container.hasTag()) {
+            container.setTag(new CompoundNBT());
         }
-        container.getTagCompound().setInteger("Energy", energy);
+        container.getOrCreateTag().putInt("Energy", energy);
         return container;
     }
 

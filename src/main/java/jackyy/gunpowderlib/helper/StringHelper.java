@@ -1,14 +1,12 @@
 package jackyy.gunpowderlib.helper;
 
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModList;
 
 import java.text.NumberFormat;
-import java.util.Map;
+import java.util.Optional;
 
-@SuppressWarnings("deprecation")
 public class StringHelper {
 
     public static String getTierText(String modid, int tier) {
@@ -28,10 +26,9 @@ public class StringHelper {
     }
 
     public static String getModNameByID(String modid) {
-        Map<String, ModContainer> indexedModList = Loader.instance().getIndexedModList();
-        ModContainer modContainer = indexedModList.get(modid);
-        if (modContainer != null) {
-            return modContainer.getName();
+        Optional<? extends ModContainer> modContainer = ModList.get().getModContainerById(modid);
+        if (modContainer.isPresent()) {
+            return modContainer.get().getModInfo().getDisplayName();
         }
         return modid;
     }
@@ -40,13 +37,16 @@ public class StringHelper {
         return localize(modid, "harvest_level." + harvestLevel).equals(modid + ".harvest_level." + harvestLevel) ? String.valueOf(harvestLevel) : localize(modid, "harvest_level." + harvestLevel);
     }
 
+    //TODO Fix localization
     public static String localize(String modid, String unlocalized, Object... args) {
         String toLocalize = modid + "." + unlocalized;
         if (args != null && args.length > 0) {
-            return I18n.translateToLocalFormatted(toLocalize, args);
+            //return I18n.translateToLocalFormatted(toLocalize, args);
+            return "Placeholder";
         }
         else {
-            return I18n.translateToLocal(toLocalize);
+            //return I18n.translateToLocal(toLocalize);
+            return "Placeholder 2";
         }
     }
 
