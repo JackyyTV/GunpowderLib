@@ -9,7 +9,7 @@ public class EnergyHelper {
         if (!container.hasTag()) {
             container.setTag(new CompoundNBT());
         }
-        container.getOrCreateTag().putInt("Energy", energy);
+        container.getOrCreateTag().putInt("energy", energy);
         return container;
     }
 

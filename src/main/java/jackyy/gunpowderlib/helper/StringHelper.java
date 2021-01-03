@@ -12,6 +12,8 @@ import java.util.Optional;
 
 public class StringHelper {
 
+    public static final String ENERGY_NBT = "energy";
+
     public static IFormattableTextComponent getTierText(String modid, int tier) {
         return localize(modid, "tooltip.tier", tier);
     }
