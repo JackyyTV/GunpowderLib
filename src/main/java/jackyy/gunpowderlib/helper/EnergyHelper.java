@@ -20,6 +20,11 @@ public class EnergyHelper {
         return storage.getEnergyStored();
     }
 
+    public static int getMaxEnergyStored(ItemStack stack) {
+        FEStorageCapability storage = (FEStorageCapability) stack.getCapability(CapabilityEnergy.ENERGY, null).orElse(null);
+        return storage.getMaxEnergyStored();
+    }
+
     public static void setEnergyStored(ItemStack stack, int amount) {
         FEStorageCapability storage = (FEStorageCapability) stack.getCapability(CapabilityEnergy.ENERGY, null).orElse(null);
         storage.setEnergy(amount);
