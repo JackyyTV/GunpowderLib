@@ -11,14 +11,14 @@ public class FEStorageCapability extends EnergyStorage implements INBTSerializab
         super(capacity, maxTransfer);
     }
 
-    public void setEnergy(int energyIn) {
-        if (energyIn < 0) {
-            energyIn = 0;
+    public void setEnergy(int energy) {
+        if (energy < 0) {
+            energy = 0;
         }
-        if (energyIn > getMaxEnergyStored()) {
-            energyIn = getEnergyStored();
+        if (energy > getMaxEnergyStored()) {
+            energy = getEnergyStored();
         }
-        this.energy = energyIn;
+        this.energy = energy;
     }
 
     public void addEnergy(int energy) {

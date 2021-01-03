@@ -23,8 +23,4 @@ public class NBTHelper {
         return hasTag(stack) ? getTag(stack).getInt(key) : 0;
     }
 
-    public static int getEnergyStored(ItemStack container) {
-        return getInt(container, "energy");
-    }
-
 }
