@@ -6,52 +6,44 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.tags.ITag;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ObjectHelper {
 
-    public static Item getItemByName(String name) {
-        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(name));
+    public static Item getItemByName(String path) {
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(path));
     }
 
-    public static Item getItemByName(String modid, String name) {
-        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(modid, name));
+    public static Item getItemByName(String namespace, String path) {
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static ItemStack getItemStackByName(String name, int amount) {
-        return new ItemStack(getItemByName(name), amount);
+    public static ItemStack getItemStackByName(String path, int amount) {
+        return new ItemStack(getItemByName(path), amount);
     }
 
-    public static ItemStack getItemStackByName(String modid, String name, int amount) {
-        return new ItemStack(getItemByName(modid, name), amount);
+    public static ItemStack getItemStackByName(String namespace, String path, int amount) {
+        return new ItemStack(getItemByName(namespace, path), amount);
     }
 
-    /*
-    TODO Use new tags system
-    public static ItemStack[] getStacksFromOreDict(String oredict) {
-        NonNullList<ItemStack> stacks = OreDictionary.getOres(oredict);
-        ItemStack[] oredictlist = new ItemStack[stacks.size()];
-        oredictlist = stacks.toArray(oredictlist);;
-        return oredictlist;
-    }
-    */
-
-    public static Block getBlockByName(String name) {
-        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation(name));
+    public static Block getBlockByName(String path) {
+        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation(path));
     }
 
-    public static Block getBlockByName(String modid, String name) {
-        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation(modid, name));
+    public static Block getBlockByName(String namespace, String path) {
+        return ForgeRegistries.BLOCKS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static ItemStack getBlockStackByName(String name, int amount) {
-        return new ItemStack(getBlockByName(name), amount);
+    public static ItemStack getBlockStackByName(String path, int amount) {
+        return new ItemStack(getBlockByName(path), amount);
     }
 
-    public static ItemStack getBlockStackByName(String modid, String name, int amount) {
-        return new ItemStack(getBlockByName(modid, name), amount);
+    public static ItemStack getBlockStackByName(String namespace, String path, int amount) {
+        return new ItemStack(getBlockByName(namespace, path), amount);
     }
 
     public static ItemStack getStackWithNBT(ItemStack stack, CompoundNBT nbt) {
@@ -59,28 +51,32 @@ public class ObjectHelper {
         return stack;
     }
 
-    public static SoundEvent getSoundByName(String modid, String name) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(modid, name));
+    public static ITag<Item> getItemsFromTag(String namespace, String path) {
+        return ItemTags.getCollection().get(new ResourceLocation(namespace, path));
     }
 
-    public static Effect getPotionByName(String modid, String name) {
-        return ForgeRegistries.POTIONS.getValue(new ResourceLocation(modid, name));
+    public static SoundEvent getSoundByName(String namespace, String path) {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static EffectInstance getPotionEffectByName(String modid, String name) {
-        return new EffectInstance(getPotionByName(modid, name));
+    public static Effect getPotionByName(String namespace, String path) {
+        return ForgeRegistries.POTIONS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static EffectInstance getPotionEffectByName(String modid, String name, int duration) {
-        return new EffectInstance(getPotionByName(modid, name), duration);
+    public static EffectInstance getPotionEffectByName(String namespace, String path) {
+        return new EffectInstance(getPotionByName(namespace, path));
     }
 
-    public static EffectInstance getPotionEffectByName(String modid, String name, int duration, int amplifier) {
-        return new EffectInstance(getPotionByName(modid, name), duration, amplifier);
+    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration) {
+        return new EffectInstance(getPotionByName(namespace, path), duration);
     }
 
-    public static EffectInstance getPotionEffectByName(String modid, String name, int duration, int amplifier, boolean beacon, boolean particles) {
-        return new EffectInstance(getPotionByName(modid, name), duration, amplifier, beacon, particles);
+    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier) {
+        return new EffectInstance(getPotionByName(namespace, path), duration, amplifier);
+    }
+
+    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier, boolean ambient, boolean particles) {
+        return new EffectInstance(getPotionByName(namespace, path), duration, amplifier, ambient, particles);
     }
 
     public static ItemStack getBotaniaFlower(String type) {

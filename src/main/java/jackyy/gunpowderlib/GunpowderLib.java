@@ -10,7 +10,6 @@ public class GunpowderLib {
     public static final String MODID = "gunpowderlib";
 
     public GunpowderLib() {
-        MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new EventsHandler());
     }
 

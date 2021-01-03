@@ -1,20 +1,26 @@
 package jackyy.gunpowderlib.helper;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.InputMappings;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import org.lwjgl.glfw.GLFW;
+
+@OnlyIn(Dist.CLIENT)
 public class KeyHelper {
 
-    /*
-    TODO Find out new methods
+    private static long window = Minecraft.getInstance().getMainWindow().getHandle();
+
     public static boolean isShiftKeyDown() {
-        return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_SHIFT) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_SHIFT);
     }
 
     public static boolean isCtrlKeyDown() {
-        return Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL);
+        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_CONTROL) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_CONTROL);
     }
 
     public static boolean isAltKeyDown() {
-        return Keyboard.isKeyDown(Keyboard.KEY_LMENU) || Keyboard.isKeyDown(Keyboard.KEY_RMENU);
+        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_ALT) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_ALT);
     }
-    */
 
 }
