@@ -46,11 +46,6 @@ public class FEItemStackCapability implements ICapabilityProvider {
         };
     }
 
-    @Override
-    public String toString() {
-        return "FEItemStackCapability [energy=" + energy + ", max=" + max + "]";
-    }
-
     @Override @Nullable
     public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction facing) {
         if (CapabilityEnergy.ENERGY == capability)
