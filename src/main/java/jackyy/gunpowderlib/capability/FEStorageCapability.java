@@ -1,43 +1,46 @@
 package jackyy.gunpowderlib.capability;
 
-import jackyy.gunpowderlib.helper.StringHelper;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.energy.EnergyStorage;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.energy.IEnergyStorage;
 
-public class FEStorageCapability extends EnergyStorage implements INBTSerializable<CompoundNBT> {
+public class FEStorageCapability implements IEnergyStorage {
 
-    public FEStorageCapability(int capacity, int maxTransfer) {
-        super(capacity, maxTransfer);
-    }
+    public ItemStack stack;
+    public IFEContainer container;
 
-    public void setEnergy(int energy) {
-        if (energy < 0) {
-            energy = 0;
-        }
-        if (energy > getMaxEnergyStored()) {
-            energy = getEnergyStored();
-        }
-        this.energy = energy;
-    }
-
-    public void addEnergy(int energy) {
-        this.energy += energy;
-        if (this.energy > getMaxEnergyStored()) {
-            this.energy = getEnergyStored();
-        }
+    public FEStorageCapability(IFEContainer container, ItemStack stack) {
+        this.stack = stack;
+        this.container = container;
     }
 
     @Override
-    public CompoundNBT serializeNBT() {
-        CompoundNBT tag = new CompoundNBT();
-        tag.putInt(StringHelper.ENERGY_NBT, getEnergyStored());
-        return tag;
+    public int receiveEnergy(int maxReceive, boolean simulate) {
+        return container.receiveEnergy(stack, maxReceive, simulate);
     }
 
     @Override
-    public void deserializeNBT(CompoundNBT nbt) {
-        setEnergy(nbt.getInt(StringHelper.ENERGY_NBT));
+    public int extractEnergy(int maxExtract, boolean simulate) {
+        return container.extractEnergy(stack, maxExtract, simulate);
+    }
+
+    @Override
+    public int getEnergyStored() {
+        return container.getEnergyStored(stack);
+    }
+
+    @Override
+    public int getMaxEnergyStored() {
+        return container.getMaxEnergyStored(stack);
+    }
+
+    @Override
+    public boolean canExtract() {
+        return true;
+    }
+
+    @Override
+    public boolean canReceive() {
+        return true;
     }
 
 }

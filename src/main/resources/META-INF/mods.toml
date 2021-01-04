@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/JackyyTV/GunpowderLib/issues"
 
 [[mods]]
 modId="gunpowderlib"
-version="1.16.4-1.0"
+version="1.16.4-1.1"
 displayName="GunpowderLib"
 displayURL="https://github.com/JackyyTV/GunpowderLib"
 logoFile="logo.png"
