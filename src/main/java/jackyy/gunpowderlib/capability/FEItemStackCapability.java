@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 
 public class FEItemStackCapability<HANDLER> implements ICapabilityProvider {
 
-    protected IEnergyStorage instance;
+    public IEnergyStorage instance;
 
     public FEItemStackCapability(IEnergyStorage instance) {
         this.instance = instance;
