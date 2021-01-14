@@ -23,28 +23,4 @@ public class NBTHelper {
         return hasTag(stack) ? getTag(stack).getInteger(key) : 0;
     }
 
-    public static int receiveEnergy(ItemStack container, int energy, int maxEnergy, boolean simulate) {
-        int stored = getEnergyStored(container);
-        int accepted = Math.min(energy, maxEnergy - stored);
-        if (!simulate) {
-            stored += accepted;
-            setInt(container, "Energy", stored);
-        }
-        return accepted;
-    }
-
-    public static int extractEnergy(ItemStack container, int energy, boolean simulate) {
-        int stored = getEnergyStored(container);
-        int extracted = Math.min(energy, stored);
-        if (!simulate) {
-            stored -= extracted;
-            setInt(container, "Energy", stored);
-        }
-        return extracted;
-    }
-
-    public static int getEnergyStored(ItemStack container) {
-        return getInt(container, "Energy");
-    }
-
 }

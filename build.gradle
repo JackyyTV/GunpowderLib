@@ -34,7 +34,7 @@ repositories {
   }
   maven {
     name = "HWYLA Maven"
-    url = "https://tehnut.info/maven"
+    url = "https://maven.tehnut.info"
   }
   maven {
     name = "TOP Maven"
@@ -57,13 +57,6 @@ processResources {
   }
   from(sourceSets.main.resources.srcDirs) {
     exclude 'mcmod.info'
-  }
-  rename '(.+_at.cfg)', 'META-INF/$1'
-}
-
-jar {
-  manifest {
-    attributes 'FMLAT': 'gunpowderlib_at.cfg'
   }
 }
 
