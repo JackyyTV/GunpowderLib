@@ -1,6 +1,7 @@
 package jackyy.gunpowderlib.helper;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
 public class ChatHelper {
@@ -11,6 +12,10 @@ public class ChatHelper {
 
     public static void msgPlayerRaw(PlayerEntity player, String msg) {
         player.sendStatusMessage(new StringTextComponent(msg), true);
+    }
+
+    public static void msgPlayerRaw(PlayerEntity player, IFormattableTextComponent msg) {
+        player.sendStatusMessage(msg, true);
     }
 
 }
