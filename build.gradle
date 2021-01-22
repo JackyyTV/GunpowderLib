@@ -92,13 +92,6 @@ repositories {
         includeGroup 'mcjty.theoneprobe'
     }
   }
-  maven {
-    name = 'Curse Maven'
-    url = 'https://www.cursemaven.com'
-    content {
-        includeGroup 'curse.maven'
-    }
-  }
 }
 
 dependencies {

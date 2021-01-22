@@ -31,7 +31,7 @@ public class EnergyHelper {
     }
 
     public static int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-        if (container.getTag() != null && !container.getTag().hasUniqueId(ENERGY_NBT)) {
+        if (!container.getOrCreateTag().contains(ENERGY_NBT)) {
             return 0;
         }
         int stored = getEnergyStored(container);
@@ -44,7 +44,7 @@ public class EnergyHelper {
     }
 
     public static int getEnergyStored(ItemStack container) {
-        if (container.getTag() == null || !container.getTag().hasUniqueId(EnergyHelper.ENERGY_NBT)) {
+        if (!container.getOrCreateTag().contains(EnergyHelper.ENERGY_NBT)) {
             return 0;
         }
         return Math.min(NBTHelper.getInt(container, EnergyHelper.ENERGY_NBT), getMaxEnergyStored(container));
@@ -52,7 +52,7 @@ public class EnergyHelper {
 
     public static int getMaxEnergyStored(ItemStack container) {
         FEStorageCapability storage = (FEStorageCapability) container.getCapability(CapabilityEnergy.ENERGY, null).orElse(null);
-        return storage.getMaxEnergyStored();
+        return storage != null ? storage.getMaxEnergyStored() : 0;
     }
 
 }
