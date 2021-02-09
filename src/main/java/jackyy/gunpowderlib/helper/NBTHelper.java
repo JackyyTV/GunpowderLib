@@ -23,4 +23,20 @@ public class NBTHelper {
         return hasTag(stack) ? getTag(stack).getInt(key) : 0;
     }
 
+    public static void setString(ItemStack stack, String key, String val) {
+        getTag(stack).putString(key, val);
+    }
+
+    public static String getString(ItemStack stack, String key) {
+        return hasTag(stack) ? getTag(stack).getString(key) : "";
+    }
+
+    public static void setBoolean(ItemStack stack, String key, boolean val) {
+        getTag(stack).putBoolean(key, val);
+    }
+
+    public static boolean getBoolean(ItemStack stack, String key) {
+        return getTag(stack).getBoolean(key);
+    }
+
 }
