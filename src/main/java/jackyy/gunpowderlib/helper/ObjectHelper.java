@@ -1,16 +1,16 @@
 package jackyy.gunpowderlib.helper;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.tags.ITag;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.tags.ITag;
 
 public class ObjectHelper {
 
@@ -46,41 +46,41 @@ public class ObjectHelper {
         return new ItemStack(getBlockByName(namespace, path), amount);
     }
 
-    public static ItemStack getStackWithNBT(ItemStack stack, CompoundNBT nbt) {
+    public static ItemStack getStackWithNBT(ItemStack stack, CompoundTag nbt) {
         stack.setTag(nbt);
         return stack;
     }
 
     public static ITag<Item> getItemsFromTag(String namespace, String path) {
-        return ItemTags.getCollection().get(new ResourceLocation(namespace, path));
+        return ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation(namespace, path)));
     }
 
     public static SoundEvent getSoundByName(String namespace, String path) {
         return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static Effect getPotionByName(String namespace, String path) {
-        return ForgeRegistries.POTIONS.getValue(new ResourceLocation(namespace, path));
+    public static MobEffect getPotionByName(String namespace, String path) {
+        return ForgeRegistries.MOB_EFFECTS.getValue(new ResourceLocation(namespace, path));
     }
 
-    public static EffectInstance getPotionEffectByName(String namespace, String path) {
-        return new EffectInstance(getPotionByName(namespace, path));
+    public static MobEffectInstance getPotionEffectByName(String namespace, String path) {
+        return new MobEffectInstance(getPotionByName(namespace, path));
     }
 
-    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration) {
-        return new EffectInstance(getPotionByName(namespace, path), duration);
+    public static MobEffectInstance getPotionEffectByName(String namespace, String path, int duration) {
+        return new MobEffectInstance(getPotionByName(namespace, path), duration);
     }
 
-    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier) {
-        return new EffectInstance(getPotionByName(namespace, path), duration, amplifier);
+    public static MobEffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier) {
+        return new MobEffectInstance(getPotionByName(namespace, path), duration, amplifier);
     }
 
-    public static EffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier, boolean ambient, boolean particles) {
-        return new EffectInstance(getPotionByName(namespace, path), duration, amplifier, ambient, particles);
+    public static MobEffectInstance getPotionEffectByName(String namespace, String path, int duration, int amplifier, boolean ambient, boolean particles) {
+        return new MobEffectInstance(getPotionByName(namespace, path), duration, amplifier, ambient, particles);
     }
 
     public static ItemStack getBotaniaFlower(String type) {
-        CompoundNBT tag = new CompoundNBT();
+        CompoundTag tag = new CompoundTag();
         tag.putString("type", type);
         return getStackWithNBT(getItemStackByName("botania", "specialflower", 1), tag);
     }

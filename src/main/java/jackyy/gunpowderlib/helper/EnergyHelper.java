@@ -1,8 +1,8 @@
 package jackyy.gunpowderlib.helper;
 
 import jackyy.gunpowderlib.capability.FEStorageCapability;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.energy.CapabilityEnergy;
 
 public class EnergyHelper {
@@ -11,7 +11,7 @@ public class EnergyHelper {
 
     public static ItemStack setDefaultEnergyTag(ItemStack stack, int energy) {
         if (!stack.hasTag()) {
-            stack.setTag(new CompoundNBT());
+            stack.setTag(new CompoundTag());
         }
         stack.getOrCreateTag().putInt(ENERGY_NBT, energy);
         return stack;

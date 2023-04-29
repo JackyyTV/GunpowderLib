@@ -1,13 +1,13 @@
 package jackyy.gunpowderlib.helper;
 
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
 public class NBTHelper {
 
-    public static CompoundNBT getTag(ItemStack stack) {
+    public static CompoundTag getTag(ItemStack stack) {
         if (!stack.hasTag())
-            stack.setTag(new CompoundNBT());
+            stack.setTag(new CompoundTag());
         return stack.getTag();
     }
 

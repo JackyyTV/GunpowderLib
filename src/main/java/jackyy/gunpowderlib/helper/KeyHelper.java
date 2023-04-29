@@ -1,7 +1,7 @@
 package jackyy.gunpowderlib.helper;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.util.InputMappings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.lwjgl.glfw.GLFW;
@@ -9,18 +9,18 @@ import org.lwjgl.glfw.GLFW;
 @OnlyIn(Dist.CLIENT)
 public class KeyHelper {
 
-    private static long window = Minecraft.getInstance().getMainWindow().getHandle();
+    private static long window = Minecraft.getInstance().getWindow().getWindow();
 
     public static boolean isShiftKeyDown() {
-        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_SHIFT) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_SHIFT);
+        return InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_SHIFT) || InputConstants.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_SHIFT);
     }
 
     public static boolean isCtrlKeyDown() {
-        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_CONTROL) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_CONTROL);
+        return InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_CONTROL) || InputConstants.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_CONTROL);
     }
 
     public static boolean isAltKeyDown() {
-        return InputMappings.isKeyDown(window, GLFW.GLFW_KEY_LEFT_ALT) || InputMappings.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_ALT);
+        return InputConstants.isKeyDown(window, GLFW.GLFW_KEY_LEFT_ALT) || InputConstants.isKeyDown(window, GLFW.GLFW_KEY_RIGHT_ALT);
     }
 
 }

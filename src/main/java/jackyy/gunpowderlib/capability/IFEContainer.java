@@ -1,6 +1,6 @@
 package jackyy.gunpowderlib.capability;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.ItemStack;
 
 public interface IFEContainer {
 

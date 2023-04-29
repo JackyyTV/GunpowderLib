@@ -1,33 +1,32 @@
-import net.minecraftforge.gradle.common.task.SignJar             
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
-
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
+        maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+plugins {
+    id 'eclipse'
+}
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
+
+import net.minecraftforge.gradle.common.tasks.SignJar
 
 version = "${mc_version}-${mod_version}"
 group = 'jackyy.gunpowderlib'
 archivesBaseName = 'GunpowderLib'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: "${mappings_channel}", version: "${mappings_version}"
     runs {
         client {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             if (project.hasProperty('mcUUID')) {
                 args '--uuid', project.getProperty('mcUUID')
@@ -38,6 +37,7 @@ minecraft {
             if (project.hasProperty('mcAccessToken')) {
                 args '--accessToken', project.getProperty('mcAccessToken')
             }
+			property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
             mods {
                 gunpowderlib {
                     source sourceSets.main
@@ -46,8 +46,20 @@ minecraft {
         }
         server {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+			property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
+            mods {
+                gunpowderlib {
+                    source sourceSets.main
+                }
+            }
+        }
+		gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
             mods {
                 gunpowderlib {
                     source sourceSets.main
@@ -56,9 +68,9 @@ minecraft {
         }
         data {
             workingDirectory project.file('run')
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'gunpowderlib', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+			args '--mod', 'gunpowderlib', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
                 gunpowderlib {
                     source sourceSets.main
@@ -73,16 +85,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
   maven {
     name = 'JEI Maven'
-    url = 'http://dvs1.progwml6.com/files/maven'
+    url = 'https://dvs1.progwml6.com/files/maven'
     content {
         includeGroup 'mezz.jei'
-    }
-  }
-  maven {
-    name = 'HWYLA Maven'
-    url 'https://maven.tehnut.info'
-    content {
-        includeGroup 'mcp.mobius.waila'
     }
   }
   maven {
@@ -96,10 +101,10 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    
-    compile fg.deobf("mezz.jei:jei-1.16.4:+")
-    compile fg.deobf("mcp.mobius.waila:Hwyla:1.10.11-B78_1.16.2")
-    compile fg.deobf("curse.maven:theoneprobe-245211:3157997") //1.16-3.0.7
+
+    implementation fg.deobf("mezz.jei:jei-1.18.2:+")
+    implementation fg.deobf("curse.maven:jade-324717:4082408") //1.18.2-5.2.6
+    implementation fg.deobf("curse.maven:theoneprobe-245211:3965688") //1.18-5.1.2
 }
 
 jar {
@@ -116,12 +121,13 @@ jar {
     }
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
 jar.finalizedBy('reobfJar') 
 
 task signJar(type: SignJar, dependsOn: jar) {
-  onlyIf {
-    project.hasProperty('keyStore')
-  }
   keyStore = project.findProperty('keyStore')
   alias = project.findProperty('keyStoreAlias')
   storePass = project.findProperty('keyStorePass')
@@ -132,11 +138,17 @@ task signJar(type: SignJar, dependsOn: jar) {
 
 build.dependsOn signJar
 
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+
 task deobfJar(type: Jar) {
   from sourceSets.main.output
   classifier = 'deobf'
 }
 
 artifacts {
+  archives sourcesJar
   archives deobfJar
 }
