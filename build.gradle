@@ -37,7 +37,7 @@ minecraft {
             if (project.hasProperty('mcAccessToken')) {
                 args '--accessToken', project.getProperty('mcAccessToken')
             }
-			property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
+            property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
             mods {
                 gunpowderlib {
                     source sourceSets.main
@@ -48,14 +48,14 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-			property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
+            property 'forge.enabledGameTestNamespaces', 'gunpowderlib'
             mods {
                 gunpowderlib {
                     source sourceSets.main
                 }
             }
         }
-		gameTestServer {
+        gameTestServer {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
@@ -70,7 +70,7 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-			args '--mod', 'gunpowderlib', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'gunpowderlib', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
                 gunpowderlib {
                     source sourceSets.main
@@ -83,20 +83,20 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-  maven {
-    name = 'JEI Maven'
-    url = 'https://dvs1.progwml6.com/files/maven'
-    content {
-        includeGroup 'mezz.jei'
+    maven {
+        name = 'JEI Maven'
+        url = 'https://dvs1.progwml6.com/files/maven'
+        content {
+            includeGroup 'mezz.jei'
+        }
     }
-  }
-  maven {
-    name = 'Curse Maven'
-    url = 'https://www.cursemaven.com'
-    content {
-        includeGroup 'curse.maven'
+    maven {
+        name = 'Curse Maven'
+        url = 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
     }
-  }
 }
 
 dependencies {
@@ -110,13 +110,13 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "GunpowderLib",
-            "Specification-Version": "${project.mc_version}-${project.mod_version}",
-            "Specification-Vendor": "Jackyy",
-            "Implementation-Title": "GunpowderLib",
-            "Implementation-Version": "${project.mc_version}-${project.mod_version}",
-            "Implementation-Vendor" :"Jackyy",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title": "GunpowderLib",
+                "Specification-Version": "${project.mc_version}-${project.mod_version}",
+                "Specification-Vendor": "Jackyy",
+                "Implementation-Title": "GunpowderLib",
+                "Implementation-Version": "${project.mc_version}-${project.mod_version}",
+                "Implementation-Vendor" :"Jackyy",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
@@ -125,30 +125,30 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-jar.finalizedBy('reobfJar') 
+jar.finalizedBy('reobfJar')
 
 task signJar(type: SignJar, dependsOn: jar) {
-  keyStore = project.findProperty('keyStore')
-  alias = project.findProperty('keyStoreAlias')
-  storePass = project.findProperty('keyStorePass')
-  keyPass = project.findProperty('keyStoreKeyPass')
-  inputFile = jar.archivePath
-  outputFile = jar.archivePath
+    keyStore = project.findProperty('keyStore')
+    alias = project.findProperty('keyStoreAlias')
+    storePass = project.findProperty('keyStorePass')
+    keyPass = project.findProperty('keyStoreKeyPass')
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
 }
 
 build.dependsOn signJar
 
 task sourcesJar(type: Jar) {
-  from sourceSets.main.allSource
-  classifier = 'sources'
+    from sourceSets.main.allSource
+    classifier = 'sources'
 }
 
 task deobfJar(type: Jar) {
-  from sourceSets.main.output
-  classifier = 'deobf'
+    from sourceSets.main.output
+    classifier = 'deobf'
 }
 
 artifacts {
-  archives sourcesJar
-  archives deobfJar
+    archives sourcesJar
+    archives deobfJar
 }
