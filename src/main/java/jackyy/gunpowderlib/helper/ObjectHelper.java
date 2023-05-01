@@ -4,6 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
@@ -53,6 +54,10 @@ public class ObjectHelper {
 
     public static ITag<Item> getItemsFromTag(String namespace, String path) {
         return ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation(namespace, path)));
+    }
+
+    public static ITag<Item> getItemsFromTag(TagKey<Item> tagKey) {
+        return ForgeRegistries.ITEMS.tags().getTag(tagKey);
     }
 
     public static SoundEvent getSoundByName(String namespace, String path) {

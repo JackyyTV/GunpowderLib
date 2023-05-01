@@ -20,8 +20,8 @@ public class EventsHandler {
         if (!(event.getEntity() instanceof LivingEntity entity))
             return;
 
-        if (entity instanceof Creeper) {
-            if (player.getUUID().equals(UUID.fromString("38de3769-70fa-441c-89e8-67280f3068a0"))) {
+        if (player.getUUID().equals(UUID.fromString("38de3769-70fa-441c-89e8-67280f3068a0"))) {
+            if (entity instanceof Creeper) {
                 event.setNewTarget(null);
             }
         }
