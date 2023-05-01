@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/JackyyTV/GunpowderLib/issues"
 
 [[mods]]
 modId="gunpowderlib"
-version="1.18.2-2.0"
+version="1.18.2-2.0.1"
 displayName="GunpowderLib"
 displayURL="https://github.com/JackyyTV/GunpowderLib"
 logoFile="logo.png"
@@ -17,7 +17,7 @@ A support library for Jackyy's mods.
 [[dependencies.gunpowderlib]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[40.1.84,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.gunpowderlib]]
