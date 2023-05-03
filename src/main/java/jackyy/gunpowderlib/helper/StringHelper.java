@@ -4,6 +4,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Tier;
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 
@@ -36,11 +39,20 @@ public class StringHelper {
         return modid;
     }
 
-    public static MutableComponent formatHarvestLevel(String modid, int harvestLevel) {
-        return localize(modid, "harvest_level." + harvestLevel).toString()
-                .equals(modid + ".harvest_level." + harvestLevel)
-                ? new TextComponent(String.valueOf(harvestLevel))
-                : localize(modid, "harvest_level." + harvestLevel);
+    public static MutableComponent formatHarvestLevel(String modid, String harvestLevel) {
+        Tier tier = TierSortingRegistry.byName(new ResourceLocation(modid, harvestLevel));
+        if (tier == null) {
+            return new TextComponent("Unknown");
+        }
+        return new TextComponent(TierSortingRegistry.getName(tier).toString());
+    }
+
+    public static MutableComponent formatHarvestLevel(String harvestLevel) {
+        Tier tier = TierSortingRegistry.byName(new ResourceLocation(harvestLevel));
+        if (tier == null) {
+            return new TextComponent("Unknown");
+        }
+        return new TextComponent(TierSortingRegistry.getName(tier).toString());
     }
 
     public static MutableComponent localize(String modid, String unlocalized, Object... args) {
