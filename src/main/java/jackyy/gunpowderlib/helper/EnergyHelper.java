@@ -3,7 +3,7 @@ package jackyy.gunpowderlib.helper;
 import jackyy.gunpowderlib.capability.FEStorageCapability;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 public class EnergyHelper {
 
@@ -51,7 +51,7 @@ public class EnergyHelper {
     }
 
     public static int getMaxEnergyStored(ItemStack container) {
-        FEStorageCapability storage = (FEStorageCapability) container.getCapability(CapabilityEnergy.ENERGY, null).orElse(null);
+        FEStorageCapability storage = (FEStorageCapability) container.getCapability(ForgeCapabilities.ENERGY, null).orElse(null);
         return storage != null ? storage.getMaxEnergyStored() : 0;
     }
 

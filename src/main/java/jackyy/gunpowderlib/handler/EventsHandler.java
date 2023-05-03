@@ -17,8 +17,7 @@ public class EventsHandler {
             return;
         if (!(event.getNewTarget() instanceof Player player) || event.getNewTarget() instanceof FakePlayer)
             return;
-        if (!(event.getEntity() instanceof LivingEntity entity))
-            return;
+        LivingEntity entity = event.getEntity();
 
         if (player.getUUID().equals(UUID.fromString("38de3769-70fa-441c-89e8-67280f3068a0"))) {
             if (entity instanceof Creeper) {

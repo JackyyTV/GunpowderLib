@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[40,)"
+loaderVersion="[45,)"
 license="Jacky's Minecraft Mods License"
 issueTrackerURL="https://github.com/JackyyTV/GunpowderLib/issues"
 
 [[mods]]
 modId="gunpowderlib"
-version="1.18.2-2.0.2"
+version="1.19.4-2.1"
 displayName="GunpowderLib"
 displayURL="https://github.com/JackyyTV/GunpowderLib"
 logoFile="logo.png"
@@ -17,12 +17,12 @@ A support library for Jackyy's mods.
 [[dependencies.gunpowderlib]]
     modId="forge"
     mandatory=true
-    versionRange="[40.1.84,)"
+    versionRange="[45,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.gunpowderlib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,1.19)"
+    versionRange="[1.19,1.20)"
     ordering="NONE"
     side="BOTH"
