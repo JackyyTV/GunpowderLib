@@ -16,6 +16,6 @@ Since this is purely a support library for my other Minecraft mods, there's no i
 ## Contact Me
 
 - Twitter - [@JackyyTV](https://twitter.com/JackyyTV)
-- Discord - Jacky#1234
+- Discord - [jackyytv](https://jackyy.hk/discord)
 - Twitch - [Jackyy](https://www.twitch.tv/jackyy)
 - Reddit - [JackyyTV](https://www.reddit.com/message/compose/?to=JackyyTV)
